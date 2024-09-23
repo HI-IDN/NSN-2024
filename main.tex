@@ -14,7 +14,10 @@
 \addbibresource{references.bib} 
 \usepackage{float}
 \usepackage{tikz}
-\usetikzlibrary{automata, positioning, arrows}
+\usetikzlibrary{automata, positioning, arrows, calc}
+\usepackage{hyperref} % Include this package for hyperlinks
+
+
 % Custom blue
 \definecolor{blue}{RGB}{16, 9, 159}
 
@@ -73,7 +76,7 @@ Við vildum einnig skrásetja ferlið gaumgæfilega til að veita nemendum inns�
 
 Á alþjóðavísu hafa ýmsir hakkarar og ,,hackerspace'' unnið með gömlum prjónavélum og endurhugsað þær með nútímatækni. Dæmi um slíkt er \emph{KnitterStream} \cite{knitterstream}, sem var listagjörningur á C2-MTL ráðstefnunni í Montréal, Kanada árið 2012 þar sem gömul rafknúin prjónavél var notuð til að umbreyta tístum á Twitter í refil (sjá mynd \ref{fig:knitterstream}). KnitterStream tengdi saman gögn og prjónaframleiðslu í rauntíma og sýndi hvernig hægt væri að samþætta stafrænar upplýsingar við textílframleiðslu á skapandi hátt. Þetta verkefni var þó meira hugsað sem einnota listaverk en kennslutæki eða framleiðslulausn fyrir minni hönnuði.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[height=.3\textheight]{myndir/knitterstream_24.jpeg}
     \includegraphics[height=.3\textheight]{myndir/knitterstream_25.jpg}
@@ -89,7 +92,7 @@ Einnig hafa verið unnin verkefni eins og endurbygging á \textit{Passap E6000} 
 Okkur var einnig kært að nota séríslensk mótíf í okkar útprjóni. Við sóttum því eftir samstarfi við \emph{Heimilisiðnaðarfélagið} og \emph{Þjóðminjasafn Íslands}, sem gáfu út tímamótaverkið \emph{Íslensk Sjónabók}, sem inniheldur safn tíu handrita frá 16.-18. öld sem varðveitt hafa íslensk útsaumsmynstur \cite{Sjonabok}. Því miður er þessi bók komin úr prentun og ekki stendur til að endurprenta hana sökum kostnaðar. Markmið útgefanda var að gera mynstrin aðgengileg svo hönnuðir gætu endurnýtt okkar ríka menningararf í listsköpun sinni. Þeir tóku því vel í að við myndum veita þessum mynstrum nýtt líf og útbúa tól til að hægt væri að vinna með mynstrin á gagnvirkan hátt.
 
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \begin{minipage}[b]{0.45\linewidth}
         \centering
@@ -230,7 +233,7 @@ Verkefnið getur einnig haft jákvæð áhrif á menntun og nýsköpun með þv�
 \section{Framkvæmd verkefnisins}
 Hér er farið yfir hvernig verkefnið var framkvæmt, með áherslu á þrepaskiptingu, helstu áfanga og tímalínu. Verkefnið var skipt í nokkur lykilþrep, þar sem hverjum áfanga var stýrt af ákveðnum ábyrgðaraðilum. Prjónavélin var til húsa í vélaskála VR-III (sjá mynd \ref{fig:workshop}) við Hjarðarhaga 2 í Reykjavík. Nemendur höfðu einnig aðgang að Sprotamýri, frumkvöðlasetri HÍ í Grósku.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.9\linewidth]{myndir/workshop.jpg}
     \caption{Verkefnið var unnið í vélaskála VR-III.}
@@ -250,7 +253,7 @@ Unnið var í verkefninu frá maí til miðjan ágúst þegar kennsla hófst á 
 
 Kosturinn við að gera þetta á þennan máta er að við höfum eftir sumarið mælanlegt tímaplan fyrir hvað hver liður tók, og hvað voru helstu flöskuhálsar. Hlutir sem eiga til með að gleymast ef ekki er skrifað strax niður.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{myndir/standup.png}
     \caption{Þátttaka í tímaóháðu stand-up með \textit{GeekBot}}
@@ -261,24 +264,42 @@ Kosturinn við að gera þetta á þennan máta er að við höfum eftir sumari�
 \begin{description}
     \item[Maí 2024:] Forkönnun og undirbúningur.  
     \begin{description}
-        \item[Elías] TODO
+        \item[Elías] Fyrstu skref:
+        \begin{enumerate}
+            \item Las um virkni \textit{Passap} vélanna, uppfærslur og mismunandi útgáfur sem voru gerðar.
+            \item Kynnti mér fyrri útfærslu af tengingu við vélbúnað og möguleika á stýringum.
+            \item Fræsa rafrás útfrá teikningum frá Bamberg \cite{bamberg} og ná stjórn á vélbúnaði í gegnum \textit{Arduino}.
+            \item Setja upp javacript forrit sem tengist arudino með serialsamskiptum yfir usb tengi.
+        \end{enumerate}
         \item[Guðrún Ísafold og Snæfríður] Þrif og undirbúningur á vél.
     \end{description}
     \item[Júní 2024:] Sambærileg verkefni voru skoðuð til að fá hugmyndir, vélbúnaður var prófaður og byrjað var að skrifa kóða til að senda mynstur til vélarinnar.
     \begin{description}
-        \item[Elías] TODO
+        \item[Elías] Setti upp bakenda sem tekur við beiðnum yfir netsamskipti og stýrir vélinni, prufukeyrt og villugreint út mánuðinn. Grunnur af vefviðmóti til að stýra vélinni.
         \item[Guðrún Ísafold] TODO
         \item[Snæfríður] Sambærileg verkefni skoðuð fyrir hugmyndir. Lærði á vélina og hvernig hún prjónar, skiptir um liti, prjónar mynstur o.fl. Prufugerðir og tengst vélinni í fyrsta skipti. Byrjað að skrifa kóða sem vinnur mynstur til að senda á vélina. Heimsóknir í heimilisiðnaðarfélagið, prjónaverksmiðjuna Kidka, textílsetrið á blönduósi og vinnustofuna hjá Ýrúrarí.
     \end{description}
     \item[Júlí 2024:]  Mynstur voru færð yfir á tölvutækt form, kóði skrifaður til að vinna með þau á ýmsan hátt, og prufugerðir á vélinni voru framkvæmdar þrátt fyrir tæknileg vandamál.
     \begin{description}
-        \item[Elías] TODO
+        \item[Elías] Lokasprettur:
+        \begin{enumerate}
+            \item Betrumbætti vefviðmót til að sýna stöðu vélarinnar í munstrinu.
+            \item 3D prentaði stykki sem vantaði til að halda garni.
+            \item Lærði hvernig þróun \textit{Passap} vélanna og stýring þeirra á mótornum breytist í gegnum tíðina.
+            \item Eftir ótal tilraunir náðum við að kveikja á mótornum.
+        \end{enumerate}
         \item[Guðrún Ísafold] TODO
         \item[Snæfríður] Sjónabókarmunstrum komið yfir á tölvutækt form. Kóði skrifaður sem vinnur með munstrin á ýmsan máta, bæta við borða, bæta við bakgrunni á myndir og skrifa texta. Kóði sem breytir myndum (\texttt{jpg} og \texttt{png}) í prjónamynstur skrifaður. Haldið áfram með prufugerðir sem var ansi tímafrekt þar sem mótorinn var ekki kominn í gang, lentum í ýmsum vandræðum með vélina og fundum út úr því hvernig er hægt að prjóna með 4 litum. Fórum í heimsókn á Þjóðminjasafnið fyrir innblástur og til að skoða hvernig íslensku munstrin voru notuð og tókum fund með Lilju starfsmanni Þjóðminjasafnsins sem upplýsti okkur meira um sjónabækurnar.
     \end{description}
     \item[Ágúst 2024:] Fleiri prufugerðir framkvæmdar, kóði fínpússaður, búinn til samskiptastaðall til að eiga við vélina, þar sem mynstur eru send á miðlægan gagnagrunn og lesin þaðan.
     \begin{description}
-        \item[Elías] TODO 
+        \item[Elías] Verkefni klárað:
+        \begin{enumerate}
+            \item Hannaði og fræsti út rafrás til að stýra mótornum.
+            \item Bjó til vefviðmót opið notendum sem getur tegið við teksta skipunum og búið til prjóna munztur af mynd byggða á tekstanum fyrir vélina. 
+            \item Tengdi opna vefviðmótið við gagnagrunn
+            \item Bjó til útfærslu af stýringunni sem sækir munstur úr gagnagrunninum til að prjóna og stýrir mótornum.
+        \end{enumerate}
         \item[Guðrún Ísafold] TODO
        \item[Snæfríður] Enn fleiri prufur og kóði fínpússaður. Mynsturgerð með Wave function collapse reikniritinu útfærð og byrjað á að þróa aðferð til að lita sjónabókarmunstrin sjálfvirkt. Fór á námskeið hjá Hafliða um þrívíddarprentun.
     \end{description}
