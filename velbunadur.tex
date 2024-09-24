@@ -1,6 +1,6 @@
 Vélbúnaður prjónavélarinn er í grófum dráttum:  nálarbeðið, sleðinn/lásinn, litaskiptirinn og mótorinn.
 
-\begin{figure}[H]
+\begin{figure}[H] % <- ekki taka út H þá fara myndirnar á flakk.
     \centering
     \includegraphics[width=0.5\linewidth]{myndir/elli/e6000.jpg}
     \caption{\textit{Passap E6000} prjónavél - \textit{mbl.is/Kristinn Magnússon}}
@@ -33,12 +33,12 @@ Vélbúnaður prjónavélarinn er í grófum dráttum:  nálarbeðið, sleðinn/
         \item Það eru þrír skynjarar á umgjörðinni sem inniheldur beltið sem skynja segulinn.
     \end{itemize}
 \end{enumerate}
-Hægt er að skipta vélbúnaðinum upp í tvö stýrikerfi. Annars vegar stýringinn á mótornum sem færir sleða lásinn frá vinstri til hægri yfir nálabeðið. Hinsvegar stýringinn á seglunum sem færa nálastillara á nálabeðinu upp og niður. Fyrir hvern nálastillir sem er stillt upp er lykkja prjónuð með garni fyrir þá nál í næstu umferð.
+Hægt er að skipta vélbúnaðinum upp í tvö stýrikerfi. Annars vegar stýringin á mótornum sem færir sleða lásinn frá vinstri til hægri yfir nálabeðið. Hinsvegar stýringin á seglunum sem færa nálastillara á nálabeðinu upp og niður. Fyrir hvern nálastillir sem er stillt upp er lykkja prjónuð með garni fyrir þá nál í næstu umferð.
 \subsubsection{Stýring nálarbeðs}
 Upprunalega \textit{Passap E6000} vélin er með stjórnborð (svokölluð \textit{Form} tölva) sem er tengt með DIN-6 snúru við sleðann sem er læstur á nálabeðinu. Sleðinn er
 með rafrás sem hefur ljósskynjara sem skynja göt á brautinni sem sleðinn rennur eftir. Götin eru \textit{2mm} breið og það eru \textit{3mm} á milli gata. Hver nál er \textit{5mm}. 
 
-\begin{figure}
+\begin{figure}[H] % <- ekki taka út H þá fara myndirnar á flakk.
     \centering
 \begin{tikzpicture}[auto, node distance=2cm, >=latex']
 
@@ -74,7 +74,7 @@ með rafrás sem hefur ljósskynjara sem skynja göt á brautinni sem sleðinn r
     \label{fig:original-pusher-control}
 \end{figure}
 Mynd \ref{fig:original-pusher-control} er kerfismynd af kerfinu sem stýrir nálastillurunum á nálabeðinu. Upprunalega stjórnborðinu var skipt út fyrir \textit{Arduino} með \textit{12v} spennubreyti sem er beintengdur við sleðann.
-\begin{figure}
+\begin{figure}[H] % <- ekki taka út H þá fara myndirnar á flakk.
     \centering
     \includegraphics[width=0.75\linewidth]{myndir/bambergDIN6.png}
     \caption{Teikningar fyrir tengingu í gegnum DIN tengið voru fengnar af vefsíðu Bamberg \cite{bamberg}. }
@@ -84,10 +84,10 @@ Pinnar 2 og 4 taka við straum frá ljósaskynjurum sleðans. Pinnar 5 og 6 stý
 Það er einn segull fyrir hvorra áttina. Sleðinn stillir munstur fyrir næstu umferð á meðan hann fer yfir nálarbeðið og prjónar  munstrið sem er nú þegar á nálarbeðinu. Til að snúa við seglunum þarf að minnsta kosti \textit{12v} straum. Pinnarnir senda merki um það hvort straumnum sé hleypt á seglanna eða ekki. \textit{Arduino} er öflug örtölva og hefur þann kost að hún er með hraða og skilvikra innri klukku. Örtölvan getur því einbeitt sér að því að taka við merkjum um stöðu ljósskynjaranna. 
 Í hvert skipti sem staðan á ljósskynjaranum sem er tengdur í pinna númer 2 á \textit{Arduino} borðinu breytist þá er staðan á á hinum skoðuð, sjá mynd \ref{fig:bambergDIN6}.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{myndir/elli/electra4600.jpg}
-    \caption{\textit{Arduino} örtölva tengd við \textit{Passap E6000} - \textit{mbl.is/Kristinn Magnússon}}
+    \caption{\textit{Arduino} örtölva tengd við DIN-6 tengi á \textit{Passap E6000} - \textit{mbl.is/Kristinn Magnússon}}
     \label{fig:arduino}
 \end{figure}
 Það eru í raun tvö tilvik sem geta átt sér stað. Annaðhvort eru þeir í sömu stöðu eða í sitthvorri. Ef að aflestur ljósskynjara við breytingu á þeim sem er tendgur í pinna 2 er sú sama þá er við á leiðinni til hægri. Ef að þeir gefa sitthvort gildið þá erum við á leiðinni til vinstri. Örtölvan er því með innvortis teljara sem hækkar í gildi þegar aflesturinn er sá sami og lækkar þegar þeir gefa sitthvort gildið.
@@ -104,7 +104,6 @@ Pinnar 2 og 4 taka við straum frá ljósaskynjurum sleðans. Pinnar 5 og 6 stý
     \caption{Caption}
     \label{fig:enter-label}
 \end{figure}
-!!! vantar texta um serial uppsetningu og svoframvegis\\
 
 Stýringin er uppsett þannig að örtölvan ítrar stanslaust í gegnum segð sem athugar hvort það hafi verið send einhver skilaboð yfir serial samskipti á USB snúrunni. Í hvert skipti sem ljósskynjarinn breytir um gildi er sú ítrun trufluð og teljarinn hækkaður eða lækkaður eftir því í hvort við séum að fara til hægri eða vinstri. Ef að það eru skilaboð þá sækir hann úr því streng sem inniheldur línuvigur úr fylkinu,\\
 sendir \texttt{r} og \texttt{l} til að fá nýjan, ég klára á morgun
