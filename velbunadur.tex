@@ -1,44 +1,42 @@
 Vélbúnaður prjónavélarinn er í grófum dráttum:  nálarbeðið, sleðinn/lásinn, litaskiptirinn og mótorinn.
 
-\begin{figure}[H] % <- ekki taka út H þá fara myndirnar á flakk.
+\begin{figure}
     \centering
-    \includegraphics[width=0.5\linewidth]{myndir/elli/e6000.jpg}
+    \includegraphics[width=.7\linewidth]{myndir/elli/e6000.jpg}
     \caption{\textit{Passap E6000} prjónavél - \textit{mbl.is/Kristinn Magnússon}}
     \label{fig:e6000}
 \end{figure}
-\begin{enumerate}
-    \item \textbf{Nálarbeðið inniheldur}
+\subsubsection{Nálarbeð}
 \begin{itemize}
     \item Braut sem sleðinn rennur eftir
-    \item Nálastillara (e. pushers) sem eru undir nálunum í nálabeðinu og ýta nálunum í prjónastöðu. \\
+    \item Nálastillara (e. pushers) sem eru undir nálunum í nálabeðinu og ýta nálunum í prjónastöðu. 
     Þeir eru notaðir til að slökkva og kveikja á nálum fyrir hverja umferð, þ.e.a.s. setja nálar í óvirka eða virka stöðu.
     \item Nálarnar sem prjóna lykkjurnar ef þær eru í réttri stöðu þegar sleðinn fer yfir þær.
+    \item Nálarnar á nálabeðinu eru merktar með númeri út frá miðju. 90 nálar til vinstri og 89 nálar til hægri frá miðjunni. 179 nálar í heildina.
 \end{itemize}
-    \item \textbf{Sleðinn/lásinn samanstendur af}
+\subsubsection{Sleði/lás}    
     \begin{itemize}
         \item Tvo ljósaskynjara sem eru notaðir til að staðsetja sleðann á nálabeðinu.
         \item Tvo segla sem setja stöðu nálastillaranna fyrir næstu umferð.
         \item Braut sem fer með nálar í eftir tveimur mögulegum leiðum: 
         i) upp og prjónar lykkju í garninu eða ii) niður og prjónar ekki lykkju.
     \end{itemize}
-    \item \textbf{Litaskiptirinn}
+\subsubsection{Litaskiptir}    
     \begin{itemize}
         \item Geymir garn.
         \item Er með einskonar takka sem sleðinn virkjar þegar hann fer yfir og skilar garni. Þá er nýtt garn sett í virka stöðu og það tekið upp á bakaleiðinni.
     \end{itemize}
-    \item \textbf{Mótorinn} 
+\subsubsection{Mótor}    
     \begin{itemize}
         \item Snýr belti sem hefur festingu fyrir sleðann.
         \item Festingin er með segul.
         \item Það eru þrír skynjarar á umgjörðinni sem inniheldur beltið sem skynja segulinn.
     \end{itemize}
-\end{enumerate}
+\subsection{Stýringar}
 Hægt er að skipta vélbúnaðinum upp í tvö stýrikerfi. Annars vegar stýringin á mótornum sem færir sleða lásinn frá vinstri til hægri yfir nálabeðið. Hinsvegar stýringin á seglunum sem færa nálastillara á nálabeðinu upp og niður. Fyrir hvern nálastillir sem er stillt upp er lykkja prjónuð með garni fyrir þá nál í næstu umferð.
 \subsubsection{Stýring nálarbeðs}
 Upprunalega \textit{Passap E6000} vélin er með stjórnborð (svokölluð \textit{Form} tölva) sem er tengd með DIN-6 snúru við sleðann sem er læstur á nálabeðinu. Sleðinn er
-með rafrás sem hefur ljósskynjara sem skynja göt á brautinni sem sleðinn rennur eftir. Götin eru \textit{2mm} breið og það eru \textit{3mm} á milli gata. Hver nál er \textit{5mm}. 
-
-Mynd \ref{fig:original-pusher-control} er kerfismynd af kerfinu sem stýrir nálastillurunum á nálabeðinu. Upprunalega stjórnborðinu var skipt út fyrir \textit{Arduino} með \textit{12v} spennubreyti sem er beintengdur við sleðann.
+með rafrás sem hefur ljósskynjara sem skynja göt á brautinni sem sleðinn rennur eftir. Götin eru \textit{2mm} breið og það eru \textit{3mm} á milli gata. Hver nál er \textit{5mm}. Mynd \ref{fig:original-pusher-control} er kerfismynd af kerfinu sem stýrir nálastillurunum á nálabeðinu. Upprunalega stjórnborðinu var skipt út fyrir \textit{Arduino} með \textit{12v} spennubreyti sem er beintengdur við sleðann.
 
 \begin{figure}[H] % <- ekki taka út H þá fara myndirnar á flakk.
     \centering
@@ -83,20 +81,23 @@ Mynd \ref{fig:original-pusher-control} er kerfismynd af kerfinu sem stýrir nál
 \begin{figure}[H] % <- ekki taka út H þá fara myndirnar á flakk.
     \centering
     \includegraphics[width=0.75\linewidth]{myndir/bambergDIN6.png}
-    \caption{Teikningar fyrir tengingu í gegnum DIN tengið voru fengnar af vefsíðu Bamberg \cite{bamberg}. }
+    \caption{Teikningar fyrir tengingu í gegnum DIN tengið (fengnar af vefsíðu Bamberg \cite{bamberg}). }
     \label{fig:bambergDIN6}
 \end{figure}
 Pinnar 2 og 4 taka við straum frá ljósaskynjurum sleðans. Pinnar 5 og 6 stýra stöðu seglana tveggja. 
 Það er einn segull fyrir hvorra áttina. Sleðinn stillir munstur fyrir næstu umferð á meðan hann fer yfir nálarbeðið og prjónar  munstrið sem er nú þegar á nálarbeðinu. Til að snúa við seglunum þarf að minnsta kosti \textit{12v} straum. Pinnarnir senda merki um það hvort straumnum sé hleypt á seglanna eða ekki. \textit{Arduino} er öflug örtölva og hefur þann kost að hún er með hraða og skilvikra innri klukku. Örtölvan getur því einbeitt sér að því að taka við merkjum um stöðu ljósskynjaranna. 
-Í hvert skipti sem staðan á ljósskynjaranum sem er tengdur í pinna númer 2 á \textit{Arduino} borðinu breytist þá er staðan á hinum skoðuð, sjá mynd \ref{fig:bambergDIN6}.
+Í hvert skipti sem staðan á ljósskynjaranum sem er tengdur í pinna númer 2 á \textit{Arduino} borðinu breytist þá er staðan á hinum skoðuð, sjá myndir \ref{fig:bambergDIN6}.% \& \ref{fig:PASSAPCONTROL}.
 
-\begin{figure}[b]
+\begin{figure}[t]
     \centering
-    \includegraphics[width=0.5\linewidth]{myndir/elli/electra4600.jpg}
+    \includegraphics[width=0.7\linewidth]{myndir/elli/electra4600.jpg}
     \caption{\textit{Arduino} örtölva tengd við DIN-6 tengi á \textit{Passap E6000} - \textit{mbl.is/Kristinn Magnússon}}
     \label{fig:arduino}
 \end{figure}
 Það eru í raun tvö tilvik sem geta átt sér stað. Annaðhvort eru þeir í sömu stöðu eða í sitthvorri. Ef að aflestur ljósskynjara við breytingu á þeim sem er tendgur í pinna 2 er sú sama þá er við á leiðinni til hægri. Ef að þeir gefa sitthvort gildið þá erum við á leiðinni til vinstri. Örtölvan er því með innvortis teljara sem hækkar í gildi þegar aflesturinn er sá sami og lækkar þegar þeir gefa sitthvort gildið.
+
+Nýja stýringin sem kemur í stað gamla stjórnborðsins hefur tvo meginliði örtölvuna og stýringin sem er keyrð á tölvu, sjá mynd \ref{fig:newConsole}. 
+
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}[auto, node distance=2cm, >=latex']
@@ -140,7 +141,7 @@ Pinnar 2 og 4 taka við straum frá ljósaskynjurum sleðans. Pinnar 5 og 6 stý
     \caption{Kerfismynd af nýja stjórnborðið}
     \label{fig:newConsole}
 \end{figure}
-Nýja stýringin sem kemur í stað gamla stjórnborðsins hefur tvo meginliði örtölvuna og stýringin sem er keyrð á tölvu, sjá mynd \ref{fig:newConsole}. 
+
 \begin{enumerate}
     \item \textbf{\textit{Arduino} örtölva} \begin{itemize}
         \item Sér um samskipti við sleðann með tengingu í gegnum DIN-6 tengi. Fær þaðan lestur af ljósskynjurum og stjórn á seglum. 
@@ -191,8 +192,44 @@ Nýja stýringin sem kemur í stað gamla stjórnborðsins hefur tvo meginliði 
     \end{itemize}
 \end{enumerate}
 \subsubsection{Stýring á mótor}
-Passap vélarnar fóru í gegnum miklar framfarir á þeim tíma sem þær voru í framleiðslu. Upphaflega þurfti notandinn að stilla munstrinn sjálfur og færa sleðann. Snemma var komin lausn með mótor og einföldum breytingum á munstri með seglum. Mótorarnir breytust einnig og voru fyrstu stýrðir með fótapedölum. Síðan kom takkastýring sem bauð notendum á að stýra mótornum á þægilegri máta. Þetta hélt áfram lengi þar til \textit{Passap E6000} kom út með stjórnborðið sem gat gert allskyns munstur með hjálp innbyggðrar \textit{Form} tölvu. Hann hinsvegar tók yfir stjórn á tökkunum og þurfti í þeirri útfærslu að hafa stjórnborðið tengt og kveikt til að geta ýtt á takkanna. Þegar vélin var tekin í sundur kom í ljós að rafrásirnar af eldri útgáfunum eru enn til staðar og hægt er að tengja framhjá stjórnborðinu. Þá eru takkarnir aftur starfhæfir án stjórnborðsins. Takkastýringin er skýr og einföld.
-
-\textbf{Til að stýra mótornum með \textit{Arduino} örtölvu} er hægt að nota 7407N kubb í einfaldri rafrás sem tengir pinna frá örtölvunni við stýri pinna á 7407N og pinanna sem er stjórnað við rafrásir hvers takka. Takkarnir virka þannig að þeir eru alltaf með $5V$ straum á \textit{high} og þegar hann er tengdur í \textit{ground} er takkurinn virkur. 7407N hermir eftir því. Það er pláss fyrir skipanir í \textit{Arduino} kóðanum fyrir skipanir á strengjaformi sem hafa 3 stafi eða færri. 
-Útfærsla á rafrás er hægt að sjá á mynd ##. 
+Passap vélarnar fóru í gegnum miklar framfarir á þeim tíma sem þær voru í framleiðslu. Upphaflega þurfti notandinn að stilla munstrinn sjálfur og færa sleðann. Snemma var komin lausn með mótor og einföldum breytingum á munstri með seglum. Mótorarnir breytust einnig og voru fyrstu stýrðir með fótapedölum. Síðan kom takkastýring sem bauð notendum á að stýra mótornum á þægilegri máta. Þetta hélt áfram lengi þar til \textit{Passap E6000} kom út með stjórnborðið sem gat gert allskyns munstur með hjálp innbyggðrar \textit{Form} tölvu. Hann hinsvegar tók yfir stjórn á tökkunum og þurfti í þeirri útfærslu að hafa stjórnborðið tengt og kveikt til að geta ýtt á takkanna. Þegar vélin var tekin í sundur kom í ljós að rafrásirnar af eldri útgáfunum eru enn til staðar og hægt er að tengja framhjá stjórnborðinu. Þá eru takkarnir aftur starfhæfir án stjórnborðsins. Kostir takkastýringarinar er að hún er skýr, einföld og notandi upplifir meiri stjórn á ferlinu.
+\begin{figure}[H] % <- ekki taka út H þá fara myndirnar á flakk.
+    \centering
+    \includegraphics[width=0.75\linewidth]{myndir/PASSAPMOTOR.png}
+    \caption{Rafrás sem tengir \textit{Arduino} við 7407N kubb sem tengist svo við 6pinna rj12 tengi til að stýra mótor. }
+    \label{fig:PASSAPMOTOR}
+\end{figure}
+Til að stýra mótornum með \textit{Arduino} örtölvu er hægt að nota 7407N kubb í einfaldri rafrás sem tengir pinna frá örtölvunni við stýri pinna á 7407N og pinanna sem er stjórnað við rafrásir hvers takka. Takkarnir virka þannig að þeir eru alltaf með $5V$ straum á \textit{high} og þegar hann er tengdur í \textit{ground} er takkurinn virkur. 7407N hermir eftir því. Það er pláss fyrir skipanir í \textit{Arduino} kóðanum á strengjaformi sem hafa 3 stafi eða færri. 
+Útfærsla á rafrás er hægt að sjá á mynd \ref{fig:PASSAPMOTOR}. Á myndinni af rafrásinni eru grænu jaðarpunktarnir til vinstri og hægri tenging við \textit{Arduino} örtölvuna sem sendir skilaboð á kubbinn. Kubburinn eru 14 samhverfu grænupunktarnir um miðjuna. Þeir taka við skipunum frá pinnum \textit{Arduino} örtölvunar á formi lágsstraums og þá er pinninn sem er fyrir neðan á myndinni tengdur í jörd (GRND). Þeir pinnar eru tengidr við rafrásir sem fara í 6 pinna rj12 tengi. Tengið sem er tengd út er til hægri við kubbinn. Þaðan eru send skilaboðin til mótorstýringarinnar. Vinstra megin við kubbinn er annað tengi sem er hægt að tengja við takkaborðið og þá helst virkni takkanna með viðbætri stýringu í gegnum \textit{Arduino} örtölvuna.
 Í kóða er nú þegar skipunin \texttt{s} notuð til að slökkva og kveikja á mótor.
+\subsubsection{Kóði}
+Fyrir kerfið sem er á mynd \ref{fig:newConsole} voru gerð tvö repo sem eru í hýsingu hjá github. Þar er hægt að lesa og sækja allan kóðan sem er notaður til að stýra vélinni.
+\begin{enumerate}
+    \item \textbf{Stýringin}: \url{https://github.com/HiDefTextiles/passAPI}
+    
+        \begin{figure}[t] % <- ekki taka út H þá fara myndirnar á flakk.
+    \centering
+    \includegraphics[width=0.8\linewidth]{myndir/passapiscreen.png}
+    \caption{Stjórnanda vefviðmót stýringarinnar.}
+    \label{fig:PASSAPMOTOR}
+\end{figure}
+    \begin{itemize}
+        \item Þar er uppsett Node.js umhverfi í bæði typescript og javascript. Það þarf því að hafa Node.js 20+. Allir pakkarnir eru sóttir með skipuninni \texttt{npm install} og síðan er það keyrt með \texttt{npm run dev}. Ef það er ekki fundinn opin serial tenging við \textit{Arduino} þá ræsist ekki stýringin.
+        \item     Inniheldur einnig kóðan fyrir \textit{Arduino} örtölvuna sem tekur við skipunum í gegnum serial samskipti og sendir út annaðhvort strenginn \texttt{R} eða \texttt{L} eftir tilvikum.
+    \end{itemize}
+    Inniheldur kóðan fyrir \textit{Arduino} örtölvuna sem tekur við skipunum í gegnum serial samskipti og sendir út annaðhvort strenginn \texttt{R} eða \texttt{L} eftir tilvikum.
+    \item \textbf{Opið vefviðmót}: \url{https://github.com/tungufoss/passapnext} \\
+    \begin{figure}[t] % <- ekki taka út H þá fara myndirnar á flakk.
+    \centering
+    \includegraphics[width=0.8\linewidth]{myndir/passapnextscreen.png}
+    \caption{Vefviðmótið sem tekur við beiðnum notenda fyrir hugmyndir að munstrum.}
+    \label{fig:PASSAPMOTOR}
+\end{figure}
+    Þetta er uppsetning á vefsíðu með bakenda og framenda sem tekur við teksta og býr til mynda munstur útfrá teksta skilaboð sem eru vistuð í gagnagrunninn. Til að keyra það þarf að hafa eftirfarandi breytur í keyrslu umhverfinu.
+    \begin{enumerate}
+        \item \texttt{DATABASE\_URL=}\textit{Hlekkur fyrir samskipti við postgresSQL gagnagrunn}
+        \item \texttt{YOUR\_ORG\_ID=} \textit{fengið frá openai API}.
+        \item \texttt{PROJECT\_ID=} \textit{fengið frá openai API}.
+        \item \texttt{OPENAI\_API\_KEY=} \textit{fengið frá openai API.}
+    \end{enumerate}
+\end{enumerate}
